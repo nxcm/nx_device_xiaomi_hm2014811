@@ -182,6 +182,10 @@ PRODUCT_PACKAGES += \
     init.recovery.qcom.rc \
     ueventd.qcom.rc
 
+# RIL
+PRODUCT_PACKAGES += \
+    libxml2
+
 # Torch
 PRODUCT_PACKAGES += \
     Torch
