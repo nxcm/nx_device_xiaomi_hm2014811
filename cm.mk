@@ -17,9 +17,10 @@ $(call inherit-product, device/xiaomi/hm2014811/full_hm2014811.mk)
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
-PRODUCT_NAME := cm_hm2014811
+PRODUCT_NAME := nx_hm2014811
 BOARD_VENDOR := xiaomi
 PRODUCT_DEVICE := hm2014811
+NX_MODEL_NAME := Redmi 2
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
