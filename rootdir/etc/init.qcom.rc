@@ -290,21 +290,13 @@ on boot
     # Allow access for CCID command/response timeout configuration
     chown system system /sys/module/ccid_bridge/parameters/bulk_msg_timeout
 
-    # LEDs
-    chown system system /sys/class/leds/blue/brightness
-    chmod 0660 /sys/class/leds/blue/brightness
-    chown system system /sys/class/leds/blue/blink
-    chmod 0660 /sys/class/leds/blue/blink
-
-    chown system system /sys/class/leds/green/brightness
-    chmod 0660 /sys/class/leds/green/brightness
-    chown system system /sys/class/leds/green/blink
-    chmod 0660 /sys/class/leds/green/blink
-
-    chown system system /sys/class/leds/red/brightness
-    chmod 0660 /sys/class/leds/red/brightness
+    # Notification LED
     chown system system /sys/class/leds/red/blink
-    chmod 0660 /sys/class/leds/red/blink
+    chown system system /sys/class/leds/green/blink
+    chown system system /sys/class/leds/blue/blink
+    chown system system /sys/class/leds/red/led_time
+    chown system system /sys/class/leds/green/led_time
+    chown system system /sys/class/leds/blue/led_time
 
     # camera sockets
     mkdir /data/misc/camera 0770 camera camera
