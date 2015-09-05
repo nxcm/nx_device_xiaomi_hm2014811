@@ -62,11 +62,44 @@ extern "C" {
 #define ULP_LOCATION_IS_FROM_GEOFENCE 0X0008
 /** Positioin is from Hardware FLP */
 #define ULP_LOCATION_IS_FROM_HW_FLP   0x0010
+#define ULP_LOCATION_IS_FROM_NLP   0x0020
 
 #define ULP_MIN_INTERVAL_INVALID 0xffffffff
 
 /*Emergency SUPL*/
 #define GPS_NI_TYPE_EMERGENCY_SUPL    4
+
+#define AGPS_CERTIFICATE_MAX_LENGTH 2000
+#define AGPS_CERTIFICATE_MAX_SLOTS 10
+
+/** Batching default ID for dummy batching session*/
+#define GPS_BATCHING_DEFAULT_ID                 1
+
+/** This cap is used to decide the FLP session cache
+size on AP. If the BATCH_SIZE in flp.conf is less than
+GPS_AP_BATCHING_SIZE_CAP, FLP session cache size will
+be twice the BATCH_SIZE defined in flp.conf. Otherwise,
+FLP session cache size will be equal to the BATCH_SIZE.*/
+#define GPS_AP_BATCHING_SIZE_CAP               40
+
+#define GPS_BATCHING_OPERATION_SUCCEESS         1
+#define GPS_BATCHING_OPERATION_FAILURE          0
+
+/** GPS extended batching flags*/
+#define GPS_EXT_BATCHING_ON_FULL        0x0000001
+#define GPS_EXT_BATCHING_ON_FIX         0x0000002
+
+/** Reasons of GPS reports batched locations*/
+typedef enum loc_batching_reported_type {
+    LOC_BATCHING_ON_FULL_IND_REPORT,
+    LOC_BATCHING_ON_FIX_IND_REPORT,
+    LOC_BATCHING_ON_QUERY_REPORT
+}LocBatchingReportedType;
+
+enum loc_registration_mask_status {
+    LOC_REGISTRATION_MASK_ENABLED,
+    LOC_REGISTRATION_MASK_DISABLED
+};
 
 typedef struct {
     /** set to sizeof(UlpLocation) */
@@ -305,9 +338,11 @@ enum loc_api_adapter_err {
     LOC_API_ADAPTER_ERR_PHONE_OFFLINE       = 7,
     LOC_API_ADAPTER_ERR_TIMEOUT             = 8,
     LOC_API_ADAPTER_ERR_SERVICE_NOT_PRESENT = 9,
+    LOC_API_ADAPTER_ERR_INTERNAL            = 10,
 
-    LOC_API_ADAPTER_ERR_ENGINE_DOWN         = 100,
-    LOC_API_ADAPTER_ERR_FAILURE,
+    /* equating engine down to phone offline, as they are the same errror */
+    LOC_API_ADAPTER_ERR_ENGINE_DOWN         = LOC_API_ADAPTER_ERR_PHONE_OFFLINE,
+    LOC_API_ADAPTER_ERR_FAILURE             = 101,
     LOC_API_ADAPTER_ERR_UNKNOWN
 };
 
@@ -334,6 +369,9 @@ enum loc_api_adapter_event_index {
     LOC_API_ADAPTER_BATCH_FULL,                        // Batching on full
     LOC_API_ADAPTER_BATCHED_POSITION_REPORT,           // Batching on fix
     LOC_API_ADAPTER_BATCHED_GENFENCE_BREACH_REPORT,    //
+    LOC_API_ADAPTER_GDT_UPLOAD_BEGIN_REQ,              // GDT upload start request
+    LOC_API_ADAPTER_GDT_UPLOAD_END_REQ,                // GDT upload end request
+    LOC_API_ADAPTER_GNSS_MEASUREMENT,                  // GNSS Measurement report
 
     LOC_API_ADAPTER_EVENT_MAX
 };
@@ -360,9 +398,24 @@ enum loc_api_adapter_event_index {
 #define LOC_API_ADAPTER_BIT_REQUEST_WIFI_AP_DATA             (1<<LOC_API_ADAPTER_REQUEST_WIFI_AP_DATA)
 #define LOC_API_ADAPTER_BIT_BATCH_FULL                       (1<<LOC_API_ADAPTER_BATCH_FULL)
 #define LOC_API_ADAPTER_BIT_BATCHED_POSITION_REPORT          (1<<LOC_API_ADAPTER_BATCHED_POSITION_REPORT)
+#define LOC_API_ADAPTER_BIT_GDT_UPLOAD_BEGIN_REQ             (1<<LOC_API_ADAPTER_GDT_UPLOAD_BEGIN_REQ)
+#define LOC_API_ADAPTER_BIT_GDT_UPLOAD_END_REQ               (1<<LOC_API_ADAPTER_GDT_UPLOAD_END_REQ)
+#define LOC_API_ADAPTER_BIT_GNSS_MEASUREMENT                 (1<<LOC_API_ADAPTER_GNSS_MEASUREMENT)
 
 typedef unsigned int LOC_API_ADAPTER_EVENT_MASK_T;
 
+typedef enum loc_api_adapter_msg_to_check_supported {
+    LOC_API_ADAPTER_MESSAGE_LOCATION_BATCHING,               // Batching
+    LOC_API_ADAPTER_MESSAGE_BATCHED_GENFENCE_BREACH,         // Geofence Batched Breach
+
+    LOC_API_ADAPTER_MESSAGE_MAX
+} LocCheckingMessagesID;
+
+typedef uint32_t LOC_GPS_LOCK_MASK;
+#define isGpsLockNone(lock) ((lock) == 0)
+#define isGpsLockMO(lock) ((lock) & ((LOC_GPS_LOCK_MASK)1))
+#define isGpsLockMT(lock) ((lock) & ((LOC_GPS_LOCK_MASK)2))
+#define isGpsLockAll(lock) (((lock) & ((LOC_GPS_LOCK_MASK)3)) == 3)
 
 #ifdef __cplusplus
 }
