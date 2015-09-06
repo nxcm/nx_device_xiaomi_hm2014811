@@ -13,9 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-LOCAL_PATH := device/xiaomi/hm2014811
+DEVICE_PATH := device/xiaomi/hm2014811
 
-TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
+TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := HM2014811,HM2014812,HM2014813,HM2014814,HM2014815,HM2014816,HM2014817,HM2014818
@@ -37,7 +37,7 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := cortex-a53
 
 # Kernel
-BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkbootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK := $(DEVICE_PATH)/mkbootimg.mk
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 androidboot.selinux=permissive
 BOARD_KERNEL_PAGESIZE := 2048
@@ -56,7 +56,7 @@ AUDIO_FEATURE_LOW_LATENCY_PRIMARY := true
 BOARD_USES_ALSA_AUDIO := true
 
 # Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BLUETOOTH_HCI_USE_MCT := true
@@ -68,6 +68,9 @@ BOARD_CAMERA_SENSORS := \
     ov8865_q8v18a
 TARGET_USE_VENDOR_CAMERA_EXT := true
 USE_DEVICE_SPECIFIC_CAMERA := true
+
+# CMHW
+BOARD_HARDWARE_CLASS += $(DEVICE_PATH)/cmhw/src
 
 # CPU
 TARGET_CPU_CORTEX_A53 := true
@@ -93,7 +96,7 @@ TARGET_QCOM_NO_FM_FIRMWARE := true
 EXTENDED_FONT_FOOTPRINT := true
 
 # GPS
-TARGET_GPS_HAL_PATH := $(LOCAL_PATH)/gps
+TARGET_GPS_HAL_PATH := $(DEVICE_PATH)/gps
 TARGET_NO_RPC := true
 
 # Init
@@ -123,11 +126,11 @@ TARGET_POWERHAL_VARIANT := qcom
 BOARD_USES_QCOM_HARDWARE := true
 
 # Recovery
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 TARGET_USERIMAGES_USE_EXT4 := true
 
 # Releasetools
-TARGET_RELEASETOOLS_EXTENSIONS := $(LOCAL_PATH)
+TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 
 # RIL
 TARGET_RIL_VARIANT := caf
@@ -137,7 +140,7 @@ PROTOBUF_SUPPORTED := true
 include device/qcom/sepolicy/sepolicy.mk
 
 BOARD_SEPOLICY_DIRS += \
-    device/xiaomi/hm2014811/sepolicy
+    $(DEVICE_PATH)/sepolicy
 
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
