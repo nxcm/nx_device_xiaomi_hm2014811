@@ -2900,10 +2900,7 @@ int32_t QCameraStateMachine::procEvtPreviewPicTakingState(qcamera_sm_evt_enum_t 
                         if(!m_parent->m_postprocessor.getMultipleStages()) {
                             m_parent->m_postprocessor.setMultipleStages(true);
                         }
-                        if (!m_parent->isLongshotSnapLimited() &&
-                            !m_parent->isCaptureShutterEnabled()) {
-                            m_parent->playShutter();
-                        }
+                        m_parent->playShutter();
                     }
                 }
                 break;
