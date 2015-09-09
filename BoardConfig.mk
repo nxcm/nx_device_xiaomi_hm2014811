@@ -148,8 +148,9 @@ BOARD_SEPOLICY_DIRS += \
 BOARD_SEPOLICY_UNION += \
     bluetooth_loader.te \
     bootanim.te \
-    healthd.te \
     file.te \
+    healthd.te \
+    perfd.te \
     qseecomd.te \
     surfaceflinger.te \
     system_server.te \
