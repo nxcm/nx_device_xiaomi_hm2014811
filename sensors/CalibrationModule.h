@@ -91,7 +91,7 @@ struct compass_algo_args {
 
 struct gyro_algo_args {
 	struct sensor_algo_args common;
-        float bias[3];
+	float bias[3];
 };
 
 struct sensor_algo_methods_t {
