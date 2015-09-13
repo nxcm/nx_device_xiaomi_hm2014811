@@ -80,7 +80,6 @@
     <ctl name="Lineout_1 amp" value="DISABLE"/> 
     <ctl name="SPK DAC Switch" value="0" />
     <ctl name="Speaker Boost" value="ENABLE" />
-    <ctl name="MICBIAS CAPLESS Switch" value="0" />
     <ctl name="EAR PA Gain" value="POS_1P5_DB" />
     <ctl name="EAR PA Boost" value="ENABLE" />
     <ctl name="MI2S_RX Channels" value="One" />
@@ -95,6 +94,7 @@
     <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia5" value="0" />
     <ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia5" value="0" />
     <ctl name="MultiMedia1 Mixer TERT_MI2S_TX" value="0" />
+    <ctl name="MultiMedia5 Mixer TERT_MI2S_TX" value="0" />
     <ctl name="MultiMedia1 Mixer INTERNAL_BT_SCO_TX" value="0" />
     <ctl name="PRI_MI2S_RX_Voice Mixer CSVoice" value="0" />
     <ctl name="Voice_Tx Mixer TERT_MI2S_TX_Voice" value="0" />
@@ -303,6 +303,10 @@
 
     <path name="audio-record capture-fm">
         <ctl name="MultiMedia1 Mixer INTERNAL_FM_TX" value="1" />
+    </path>
+
+    <path name="low-latency-record">
+        <ctl name="MultiMedia5 Mixer TERT_MI2S_TX" value="1" />
     </path>
 
     <path name="fm-virtual-record capture-fm">
@@ -540,7 +544,6 @@
         <path name="adc2" />
         <ctl name="ADC2 MUX" value="INP2" />
         <ctl name="IIR1 INP1 MUX" value="DEC1" />
-        <ctl name="MICBIAS CAPLESS Switch" value="1" />
     </path>
 
     <path name="sidetone-iir">
@@ -586,7 +589,6 @@
     </path>
 
     <path name="speaker-and-headphones">
-    <!--    <path name="headphones" /> -->
         <ctl name="RX2 MIX1 INP1" value="RX2"/>
         <ctl name="RDAC2 MUX" value="RX2"/>
         <ctl name="HPHR" value="Switch"/>
