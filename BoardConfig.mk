@@ -81,7 +81,11 @@ TARGET_CPU_CORTEX_A53 := true
 TARGET_HW_DISK_ENCRYPTION := true
 
 # Dex
-WITH_DEXPREOPT := true
+ifeq ($(HOST_OS),linux)
+    ifeq ($(WITH_DEXPREOPT),)
+      WITH_DEXPREOPT := true
+  endif
+endif
 
 # Display
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
