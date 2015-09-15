@@ -1,4 +1,5 @@
 on enable-low-power
+    start config-lowmem
 
     # Adaptive LMK
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
@@ -58,3 +59,9 @@ on class_start:late_start
 on property:init.svc.recovery=running
     trigger enable-low-power
 
+on property:ro.config.lowmem=true
+    # KSM
+    write /sys/kernel/mm/ksm/pages_to_scan 100
+    write /sys/kernel/mm/ksm/sleep_millisecs 100
+    write /sys/kernel/mm/ksm/deferred_timer 1
+    write /sys/kernel/mm/ksm/run 1

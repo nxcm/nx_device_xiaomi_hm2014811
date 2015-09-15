@@ -586,3 +586,9 @@ service wcnss-service /system/bin/wcnss_service
 on property:init.svc.bootanim=stopped
     write /sys/class/graphics/fb0/blank 1
     write /sys/class/graphics/fb0/blank 0
+
+service config-lowmem /system/bin/sh /system/etc/init.qcom.lowmem.sh
+   class late_start
+   user root
+   disabled
+   oneshot
