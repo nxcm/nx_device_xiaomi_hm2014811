@@ -73,7 +73,9 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 
 # CMHW
 BOARD_USES_CYANOGEN_HARDWARE := true
-BOARD_HARDWARE_CLASS += hardware/cyanogen/cmhw
+BOARD_HARDWARE_CLASS += \
+    hardware/cyanogen/cmhw \
+    $(DEVICE_PATH)/cmhw
 
 # CPU
 TARGET_CPU_CORTEX_A53 := true

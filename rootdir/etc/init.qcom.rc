@@ -309,6 +309,10 @@ on boot
     mkdir /data/misc/display 0770 system graphics
     mkdir /persist/display 0770 system graphics
 
+    # vibrator
+    chown system system /sys/class/timed_output/vibrator/vtg_level
+    chmod 0660 /sys/class/timed_output/vibrator/vtg_level
+
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
 
