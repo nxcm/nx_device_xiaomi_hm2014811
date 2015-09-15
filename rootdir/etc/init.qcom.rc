@@ -582,3 +582,7 @@ service wcnss-service /system/bin/wcnss_service
     class main
     user system
     group system wifi radio
+
+on property:init.svc.bootanim=stopped
+    write /sys/class/graphics/fb0/blank 1
+    write /sys/class/graphics/fb0/blank 0
