@@ -47,7 +47,7 @@ ro.qc.sdk.izat.premium.enabled=0
 ro.qc.sdk.izat.service_mask=0x0
 
 # IO Scheduler
-sys.io.scheduler=row
+sys.io.scheduler=bfq
 
 # NITZ
 persist.rild.nitz_plmn=
