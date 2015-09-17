@@ -76,7 +76,6 @@
     <ctl name="EAR_S" value="ZERO" />
     <ctl name="HPHL" value="ZERO" />
     <ctl name="HPHR" value="ZERO" />
-    <ctl name="HPH SPK" value="ZERO"/> 
     <ctl name="Lineout_1 amp" value="DISABLE"/> 
     <ctl name="SPK DAC Switch" value="0" />
     <ctl name="Speaker Boost" value="ENABLE" />
@@ -98,6 +97,7 @@
     <ctl name="MultiMedia1 Mixer INTERNAL_BT_SCO_TX" value="0" />
     <ctl name="PRI_MI2S_RX_Voice Mixer CSVoice" value="0" />
     <ctl name="Voice_Tx Mixer TERT_MI2S_TX_Voice" value="0" />
+    <ctl name="PRI_MI2S_RX Port Mixer INTERNAL_BT_SCO_TX" value="0" />
     <!-- Voice BTSCO -->
     <ctl name="Internal BTSCO SampleRate" value="8000" />
     <ctl name="INTERNAL_BT_SCO_RX_Voice Mixer CSVoice" value="0" />
@@ -504,13 +504,11 @@
     </path>
 
     <path name="speaker">
-        <ctl name="RX2 MIX1 INP1" value="RX2"/> 
-        <ctl name="RDAC2 MUX" value="RX2"/> 
-        <ctl name="HPHR" value="Switch"/> 
-        <ctl name="MI2S_RX Channels" value="One" />
-        <ctl name="RX1 MIX1 INP1" value="RX1" />
-        <ctl name="HPHL" value="Switch" />
-        <ctl name="Lineout_1 amp" value="ENABLE"/>
+        <ctl name="RX2 MIX1 INP1" value="RX2" />
+        <ctl name="RX3 MIX1 INP1" value="RX1" />
+        <ctl name="RDAC2 MUX" value="RX2" />
+        <ctl name="HPHR" value="Switch" />
+        <ctl name="SPK DAC Switch" value="1" />
     </path>
 
     <path name="speaker-mic">
@@ -589,13 +587,8 @@
     </path>
 
     <path name="speaker-and-headphones">
-        <ctl name="RX2 MIX1 INP1" value="RX2"/>
-        <ctl name="RDAC2 MUX" value="RX2"/>
-        <ctl name="HPHR" value="Switch"/>
-        <ctl name="MI2S_RX Channels" value="One" />
-        <ctl name="RX1 MIX1 INP1" value="RX1" />
-        <ctl name="HPHL" value="Switch" />
-        <ctl name="Lineout_1 amp" value="DUALMODE"/>
+        <path name="headphones" />
+        <path name="speaker" />
     </path>
 
     <path name="usb-headphones">
