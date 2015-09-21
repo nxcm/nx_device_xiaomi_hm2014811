@@ -76,7 +76,6 @@
     <ctl name="EAR_S" value="ZERO" />
     <ctl name="HPHL" value="ZERO" />
     <ctl name="HPHR" value="ZERO" />
-    <ctl name="Lineout_1 amp" value="DISABLE"/> 
     <ctl name="SPK DAC Switch" value="0" />
     <ctl name="Speaker Boost" value="ENABLE" />
     <ctl name="EAR PA Gain" value="POS_1P5_DB" />
@@ -509,6 +508,7 @@
         <ctl name="RDAC2 MUX" value="RX2" />
         <ctl name="HPHR" value="Switch" />
         <ctl name="SPK DAC Switch" value="1" />
+        <ctl name="Lineout_1 amp" value="ENABLE"/>
     </path>
 
     <path name="speaker-mic">
@@ -589,6 +589,7 @@
     <path name="speaker-and-headphones">
         <path name="headphones" />
         <path name="speaker" />
+        <ctl name="Lineout_1 amp" value="DUALMODE"/>
     </path>
 
     <path name="usb-headphones">
