@@ -48,13 +48,6 @@ BOARD_HARDWARE_CLASS += $(DEVICE_PATH)/cmhw
 # CPU
 TARGET_CPU_CORTEX_A53 := true
 
-# Dex
-ifeq ($(HOST_OS),linux)
-    ifeq ($(WITH_DEXPREOPT),)
-      WITH_DEXPREOPT := true
-  endif
-endif
-
 # GPS
 TARGET_GPS_HAL_PATH := $(DEVICE_PATH)/gps
 TARGET_NO_RPC := true
