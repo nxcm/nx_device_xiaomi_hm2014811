@@ -22,3 +22,6 @@ persist.radio.rat_on=combine
 ro.com.android.mobiledata=false
 ro.telephony.default_network=9,1
 ro.ril.multi_rat_capable=true
+
+# Scheduler
+persist.sys.io.scheduler=bfq
