@@ -40,6 +40,7 @@ LOCAL_C_INCLUDES += \
     frameworks/native/include/media/openmax \
 
 LOCAL_MODULE:= camera_test
+LOCAL_32_BIT_ONLY := true
 LOCAL_MODULE_TAGS:= tests
 
 LOCAL_CFLAGS += -Wall -fno-short-enums -O0
