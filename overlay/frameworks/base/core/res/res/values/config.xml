@@ -125,6 +125,8 @@
     -->
     <integer name="config_longPressOnHomeBehavior">3</integer>
 
+    <integer name="config_buttonBrightnessSettingDefault">0</integer>
+
     <!-- Default value for led color when battery is low on charge -->
     <integer name="config_notificationsBatteryLowARGB">0x00FF0000</integer>
 
@@ -157,5 +159,4 @@
          value chosen by ActivityManager based on screen size.  0 prevents keeping any extra
          memory over what the kernel keeps by default.  -1 keeps the default. -->
     <integer name="config_extraFreeKbytesAbsolute">61440</integer>
-
 </resources>
