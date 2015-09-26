@@ -94,6 +94,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     init.qcom.lowmem.sh
 
+# Baseband
+PRODUCT_PACKAGES += \
+    init.redmi.sh
+
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.target.rc

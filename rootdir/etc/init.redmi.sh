@@ -31,11 +31,3 @@
 # grep the modem partition for baseband version and set it
 setprop gsm.version.baseband `strings /dev/block/bootdevice/by-name/modem | grep "^MPSS.DPM." | head -1`
 
-MemTotalStr=`cat /proc/meminfo | grep MemTotal`
-MemTotal=${MemTotalStr:16:8}
-ZRAM_THRESHOLD=1048576
-IsLowMemory=0
-((IsLowMemory=MemTotal<ZRAM_THRESHOLD?1:0))
-if [ $IsLowMemory -eq 1 ]; then
-    setprop ro.config.lowmem true
-fi
