@@ -38,6 +38,9 @@ on boot
     chown system system /sys/class/timed_output/vibrator/vtg_level
     chmod 0660 /sys/class/timed_output/vibrator/vtg_level
 
+on init
+   write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
+
 on property:service.bootanim.exit=1
     start config-lowmem
     start redmi
@@ -55,6 +58,9 @@ on property:ro.config.lowmem=true
     write /sys/module/process_reclaim/parameters/pressure_max 70
     write /sys/module/process_reclaim/parameters/per_swap_size 512
     write /sys/module/process_reclaim/parameters/swap_opt_eff 30
+
+    swapon_all /fstab.qcom
+    write /proc/sys/vm/swappiness 100
 
 service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
     class late_start
