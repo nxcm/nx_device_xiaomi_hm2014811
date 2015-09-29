@@ -58,6 +58,9 @@ on property:ro.config.lowmem=true
     write /sys/module/process_reclaim/parameters/per_swap_size 512
     write /sys/module/process_reclaim/parameters/swap_opt_eff 30
 
+    swapon_all /fstab.qcom
+    write /proc/sys/vm/swappiness 100
+
 service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
     class late_start
 
