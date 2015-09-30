@@ -74,6 +74,8 @@ BOARD_SEPOLICY_DIRS += \
 
 BOARD_SEPOLICY_UNION += \
     file.te \
+    irsc_util.te \
+    mm-qcamerad.te \
     system_server.te \
     file_contexts
 

@@ -1,2 +1,5 @@
 # CmHardwareService access to VibratorHW
 allow system_server vibeamp_sysfs:file rw_file_perms;
+
+# For libcalmodule_akm.so
+allow system_server default_prop:property_service set;

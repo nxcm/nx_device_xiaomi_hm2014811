@@ -1,0 +1,5 @@
+# Nick Kralevich <nnk@google.com> : Allow loading files with text relocations from /system
+allow mm-qcamerad system_file:file execmod;
+
+allow mm-qcamerad system_data_file:sock_file unlink;
+allow mm-qcamerad sensors_socket:sock_file read;
