@@ -28,9 +28,6 @@
 # The script will check total_ram and enable zram for devices with total_ram
 # less or equals to 1GB
 
-# grep the modem partition for baseband version and set it
-setprop gsm.version.baseband `strings /dev/block/bootdevice/by-name/modem | grep "^MPSS.DPM." | head -1`
-
 MemTotalStr=`cat /proc/meminfo | grep MemTotal`
 MemTotal=${MemTotalStr:16:8}
 ZRAM_THRESHOLD=1048576
