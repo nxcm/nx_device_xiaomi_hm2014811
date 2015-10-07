@@ -50,7 +50,6 @@ vendor/lib/libmmjpeg.so
 vendor/lib/libmmqjpeg_codec.so
 vendor/lib/liboemcamera.so
 vendor/lib/libqomx_jpegenc.so
-vendor/lib/libqomx_jpegdec.so
 
 # Camera Actuator
 vendor/lib/libactuator_dw9714_13p1ba.so
@@ -189,7 +188,6 @@ vendor/lib/libSHIMDivxDrm.so
 
 # Perf
 bin/perfd
-vendor/lib/libqc-opt.so
 vendor/lib/libqti-perfd-client.so
 
 # Postprocessing
