@@ -92,6 +92,10 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     init.target.rc
 
+# LMK
+PRODUCT_PACKAGES += \
+    init.redmi.sh
+
 # Sensor HAL
 PRODUCT_PACKAGES += \
     calmodule.cfg \

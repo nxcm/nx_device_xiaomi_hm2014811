@@ -36,6 +36,9 @@ persist.sys.io.scheduler=bfq
 # set max background services
 ro.config.max_starting_bg=8
 
+# set max backgroud apps limit
+ro.sys.fw.bg_apps_limit=70
+
 # use 3 threads max for dex2oat
 ro.sys.fw.dex2oat_thread_count=3
 

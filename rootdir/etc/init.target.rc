@@ -52,6 +52,9 @@ on boot
 on init
    write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
 
+on property:service.bootanim.exit=1
+    start redmi
+
 on post-fs
     write /sys/block/zram0/comp_algorithm lz4
     swapon_all /fstab.qcom
@@ -68,3 +71,9 @@ service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw
 service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/usbdisk /storage/usbdisk
     class late_start
     disabled
+
+service redmi /system/bin/sh /system/etc/init.redmi.sh
+   class late_start
+   user root
+   disabled
+   oneshot
